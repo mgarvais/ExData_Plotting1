@@ -9,8 +9,6 @@ power<-read.table("household_power_consumption.txt", header=TRUE,sep=";")
 
 target_dates <- subset(power, Date == '1/2/2007' | Date == '2/2/2007')
 
-#change date format
-target_dates$Date<-(as.Date(X$Date,format="%d/%m/%Y"))
 
 #set as numeric
 target_dates$Global_active_power<-as.numeric(as.character(target_dates$Global_active_power))
