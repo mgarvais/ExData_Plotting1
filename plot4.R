@@ -20,26 +20,18 @@ target_dates$Global_reactive_power<-as.numeric(as.character(target_dates$Global_
 target_dates$Sub_metering_1r<-as.numeric(as.character(target_dates$Sub_metering_1))
 target_dates$Sub_metering_2<-as.numeric(as.character(target_dates$Sub_metering_2))
 target_dates$Sub_metering_3<-as.numeric(as.character(target_dates$Sub_metering_3))
-target_dates$voltage<-as.numeric(as.character(target_dates$voltage))
+target_dates$Voltage<-as.numeric(as.character(target_dates$Voltage))
 
 ##setup parameters
-
 png(filename="plot4.png", width=480, height=480)
-par(mfcol = c(2, 2) 
-
-## from plot1.R
-
+par(mfcol = c(2, 2))
+# global active power upper left
 plot(target_dates$target_datetime, target_dates$Global_active_power, type="l", ylab="Global Active Power",xlab="")
-
-## from plot2.R
-plot(target_dates$target_datetime, target_dates$Voltage, type="l", ylab="Voltage",xlab="")
   
-    
-## from #3    
+# sub metering upper right  
  plot(target_dates$target_datetime, target_dates$Sub_metering_1, type="l", ylab="Energy sub meetering",xlab="", col="black")
  lines(target_dates$target_datetime, target_dates$Sub_metering_2, col="red")
  lines(target_dates$target_datetime, target_dates$Sub_metering_3, col="blue")
-
  #set legend
  legend("topright",
       c("Sub_metering_1","Sub_metering_2", "Sub_metering_3"),
@@ -47,12 +39,11 @@ plot(target_dates$target_datetime, target_dates$Voltage, type="l", ylab="Voltage
       lwd=c(1.5,1.5),
       col=c("black","red", "blue"))
 
+# voltage  lower left
+plot(target_dates$target_datetime, target_dates$Voltage, type="l", ylab="Voltage",xlab="datetime")
 
-
-## 4 goes here
-
-
-plot(target_dates$target_datetime, target_dates$Global_reactive_power, type="l", ylab="Global_reactive_Power",xlab="")
+# Reactive power lower right
+plot(target_dates$target_datetime, target_dates$Global_reactive_power, type="l", ylab="Global_reactive_Power",xlab="datetime")
 
 
 
